@@ -1,0 +1,59 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+}
+
+a,a:hover,a:visited,a:link{
+  text-decoration: none;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .text-muted {
+  margin: 10px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.user-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: -24px 0px;
+  border: solid 1px #FFF;
+  box-shadow: 0px 0px 3px rgba(0,0,0,.4);
+  transition: all ease 0.5s;
+}
+li:hover .user-icon{
+  transform: rotateZ(360deg);
+}
+
+.panel .panel-body {
+  border-top: solid 1px #EEE;
+}
+
+.item-thumbnail {
+  width: 64px;
+  height: 64px;
+  margin-right: 10px;
+}
