@@ -7,21 +7,18 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"><i class="glyphicon glyphicon-home"></i> &nbsp; Bảng tin</div>
                 @forelse ($tasks as $task)
-                <div class="panel-body">
+                <div class="panel-body item {{ $task->end_at->lt(Carbon\Carbon::now())?'expired':''}}">
                     <div class="clearfix">
                         <img src="{!! Gravatar::get($task->user->email) !!}" class="img-thumbnail item-thumbnail pull-left">
                         <div>
                             <div class="cleafix">
                                 <small>Đăng bởi <b class="text-primary">{{ $task->user->name }}</b> lúc <em>{{$task->created_at}}</em></small>
                                 <div class="pull-right">
-                                    <small title="{{$task->end_at}}" data-toggle="tooltip" data-placement="top">{{$task->end_at->diffForHumans()}}</small>
+                                    <small title="{{$task->end_at}}" data-toggle="tooltip" data-placement="top">Hạn nộp: {{$task->end_at->diffForHumans()}}</small>
                                 </div>
                             </div>
                             <div>
-                                <a href="{!!action('HomeController@showDetail', ['id'=>$task->id])!!}"><big>{{ $task->title }}</big></a>
-                            </div>
-                            <div>
-                                {{ str_limit(strip_tags($task->description),100) }}
+                                <a href="{!!action('HomeController@showDetail', ['id'=>$task->id])!!}"><strong>{{str_limit($task->title,180)}}</strong></a>
                             </div>
                         </div>
                     </div>
