@@ -25,7 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
-
-        //
+        $gate->define('delete-file', function ($user, $file) {
+            dd('1');
+            return true;
+        });
     }
 }

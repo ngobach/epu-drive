@@ -43,6 +43,7 @@ class TaskController extends Controller
         $task->end_at = $req->end_at;
         $task->user_id = $req->user()->id;
         $task->save();
-    	return redirect()->action('TaskController@getEdit',['id'=> $task->id])->with('status','Thành công!');
+    	return back()->with('status','Thành công!');
     }
+
 }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Tài khoản: ' . auth()->user()->name)
+@section('title','Tài khoản: ' . $user->name)
 @section('content')
 <div class="container">
 	<div class="row">
@@ -13,14 +13,14 @@
 					@include('common.status')
 					@include('common.error')
 
-					<form action="{{ action('UserController@postEdit') }}" class="form-horizontal" method="post">
+					<form action="{{ action('UserController@postEdit',['id'=>$user->id]) }}" class="form-horizontal" method="post">
 
 						{!! csrf_field() !!}
 
 						
 						<div class="form-group">
 							<div class="col-sm-2" style="text-align: right">
-								<img src="{!! Gravatar::get(Auth::user()->email) !!}" class="img-thumbnail" />
+								<img src="{!! Gravatar::get($user->email) !!}" class="img-thumbnail" />
 							</div>
 							<div class="col-sm-10">
 								<b>Thay đổi ảnh đại diện?</b><br>
@@ -32,9 +32,16 @@
 						</div>
 
 						<div class="form-group">
+							<label class="control-label col-sm-2">Email</label>
+							<div class="col-sm-10">
+								<input type="text" disabled="" class="form-control" value="{{$user->email}}" />
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="control-label col-sm-2">Họ tên</label>
 							<div class="col-sm-10">
-								<input type="text" name="name" class="form-control" value="{{ old('name',auth()->user()->name) }}" />
+								<input type="text" name="name" class="form-control" value="{{ old('name',$user->name) }}" />
 							</div>
 						</div>
 

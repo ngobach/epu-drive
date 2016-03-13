@@ -15,7 +15,7 @@ Route::group(['middleware' => 'web'], function () {
 
 	// Trang giới thiệu
 	Route::get('gioi-thieu', function(){
-		return view('gioithieu');
+		return view('gioi_thieu');
 	});
 
 
@@ -24,10 +24,16 @@ Route::group(['middleware' => 'web'], function () {
 	Route::controller('task','TaskController');
 	Route::get('home', 'HomeController@index');
 	Route::get('detail/{id}','HomeController@showDetail');
+	Route::post('detail/{id}','HomeController@postFile');
+	Route::get('file/{id}','HomeController@getFile');
 
 	// Test page
 	Route::get('test', function (){
-		return view('test');
+		$rows = 5;
+		$cols = 5;
+		if (Request::has('rows')) $rows = intval(Request::input('rows'));
+		if (Request::has('cols')) $cols = intval(Request::input('cols'));
+		return view('test',compact(['rows','cols']));
 	});
 
 	// Trang chủ

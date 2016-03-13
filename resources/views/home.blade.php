@@ -7,7 +7,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"><i class="glyphicon glyphicon-home"></i> &nbsp; Bảng tin</div>
                 @forelse ($tasks as $task)
-                <div class="panel-body item {{ $task->end_at->lt(Carbon\Carbon::now())?'expired':''}}">
+                <div class="panel-body item {{ $task->expired()?'expired':''}}">
                     <div class="clearfix">
                         <img src="{!! Gravatar::get($task->user->email) !!}" class="img-thumbnail item-thumbnail pull-left">
                         <div>
@@ -52,7 +52,7 @@
                     </tr>
                     <tr>
                         <th style="width: 70">Số tệp tin</th>
-                        <td class="text-center">###</td>
+                        <td class="text-center">{{ $stat['total_file'] }}</td>
                     </tr>
                 </table>
             </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class UserController extends Controller
 {
@@ -16,19 +17,30 @@ class UserController extends Controller
 	}
 
 
-    function getEdit(Request $req){
-		return view('auth.my_profile');
+    function getEdit(Request $req,$id = false){
+        if (!$id)
+            return redirect()->action('UserController@getEdit', ['id'=>$req->user()->id]);
+        if ($id != $req->user()->id && !$req->user()->admin)
+            abort(403);
+        $user = User::findOrFail($id);
+		return view('auth.edit', ['user'=>$user]);
     }
-    function postEdit(Request $req){
+
+    function postEdit(Request $req, $id){
     	$this->validate($req, [
     		'name' => 'required|min:6',
     		'password' => 'confirmed'
 		]);
 
-		$req->user()->name = $req->input('name');
+        if ($id != $req->user()->id && !$req->user()->admin)
+            abort(403);
+
+        $user = User::findOrFail($id);
+
+		$user->name = $req->input('name');
 		if (!empty($req->password))
-			$req->user()->password = bcrypt($req->password);
-		$req->user()->save();
+			$user->password = bcrypt($req->password);
+		$user->save();
     	return back()->with('status', 'Thông tin đã được cập nhật!');
     }
 
@@ -51,4 +63,9 @@ class UserController extends Controller
     	}
     }
 
+    public function getDetail(Request $req, $id)
+    {
+        $user = User::findOrFail($id);
+        return view('auth.detail', ['user'=>$user]);
+    }
 }

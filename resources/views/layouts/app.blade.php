@@ -44,7 +44,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><b style="color: #FF0000">Quản trị</b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{!! action('UserController@getActivation') !!}">Kích hoạt tài khoản</a></li>
+                            <li><a href="{!! action('UserController@getActivation') !!}">Kích hoạt tài khoản
+                            @if ($stat['unactivated_user']>0)
+                            <span class="badge badge-important">{{$stat['unactivated_user']}}</span></a>
+                            @endif
+                            </li>
                             <li><a href="{!! action('TaskController@getEdit') !!}">Bài mới</a></li>
                         </ul>
                     </li>
@@ -65,7 +69,8 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ action('UserController@getEdit') }}"><i class="fa fa-btn fa-user"></i>Thông tin tài khoản</a></li>
+                            <li><a href="{{ action('UserController@getDetail', ['id'=> auth()->user()->id]) }}"><i class="fa fa-btn fa-user"></i>Thông tin tài khoản</a></li>
+                            <li><a href="{{ action('UserController@getEdit') }}"><i class="fa fa-btn fa-edit"></i>Cập nhật hồ sơ</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Đăng xuất</a></li>
                         </ul>

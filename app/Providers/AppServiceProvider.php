@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
                 'total_user' => \App\User::count(),
                 'unactivated_user' => \App\User::where('actived',0)->count(),
                 'total_task' => \App\Task::count(),
+                'total_file' => \App\File::count(),
             ]);
             \Carbon\Carbon::setLocale('vi');
         }
