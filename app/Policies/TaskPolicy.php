@@ -31,4 +31,5 @@ class TaskPolicy
     public function upload($user, $task){
         return !$task->expired() && $task->canSubmit(Auth::user());
     }
+
 }

@@ -17,7 +17,7 @@
 					@if (auth()->user()->admin)
 					<div class="btn-group pull-left">
 						<a class="btn btn-xs btn-primary" href="{!!action('TaskController@getEdit',['id'=>$task->id])!!}">Sửa bài</a>
-						<a class="btn btn-xs btn-danger" href="#">Xóa bài</a>
+						<a class="btn btn-xs btn-danger" href="{!!action('TaskController@getDelete', ['id'=>$task->id])!!}">Xóa bài</a>
 					</div>
 					@endif
 					<div class="pull-right">
@@ -34,7 +34,7 @@
 				</div>
 				<div class="list-group">
 					@foreach ($files as $file)
-					<div class="list-group-item clearfix">
+					<div class="list-group-item clearfix" id="file-{{$file->id}}">
 						<div class="pull-left" style="">
 							<p><strong>{{basename($file->file_path)}}</strong></p>
 							<small class="text-muted">Tải lên bởi <b>{{$file->user->name}}</b>, {{$file->created_at}}</small>
@@ -42,9 +42,9 @@
 						<div class="pull-right">
 							<div class="btn-group">
 							<a href="{!!action('HomeController@getFile', ['id' => $file->id ])!!}" class="btn btn-success">Tải xuống</a>
-							@can('detete-file', $file)
-							<a href="javascript:void(0)" class="btn btn-danger" onclick="deleteFile({{$file->id}})">Tải xuống</a>
-							@endcan
+							@if (Gate::check('delete-file', $file))
+							<a href="javascript:void(0)" class="btn btn-danger" onclick="deleteFile({{$file->id}})">Xoá</a>
+							@endif
 							</div>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-primary">Xóa</button>
+        <button type="button" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -111,8 +111,30 @@
 
 @push('scripts')
 <script type="text/javascript">
+var fileId = 0;
+var token = '{{csrf_token()}}';
 $(function(){
+	$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token
+        }
+	});
+
     $('[data-toggle="tooltip"]').tooltip()
+    window.deleteFile = function (id) {
+    	fileId = id;
+    	$('#delete-confirm').modal();
+    }
+    window.confirmDelete = function (){
+    	var url = "{{action('HomeController@deleteFile')}}/" + fileId;
+    	$.post(url,{
+    		_method : 'delete'
+    	}, function (data) {
+    		alert(data);
+	    	$('#file-' + fileId).fadeOut();
+    	});
+	    $('#delete-confirm').modal('hide');
+    }
 });
 </script>
 @endpush

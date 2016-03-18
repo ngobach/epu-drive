@@ -46,4 +46,25 @@ class TaskController extends Controller
     	return back()->with('status','Thành công!');
     }
 
+    public function getDelete(Request $req, $id){
+        $task = Task::findOrFail($id);
+        return view('task.delete', [
+            'task' => $task,
+            'deleted' => false
+        ]);
+    }
+
+    public function postDelete(Request $req, $id){
+        $task = Task::findOrFail($id);
+        // Delete task logics here
+        foreach ($task->files as $file) {
+            $file->remove();
+            $file->delete();
+        }
+        $task->delete();
+        return view('task.delete', [
+            'task' => $task,
+            'deleted' => true
+        ]);
+    }
 }

@@ -26,8 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
         $gate->define('delete-file', function ($user, $file) {
-            dd('1');
-            return true;
+            return $user->admin || $user->id === $file->user->id;
         });
     }
 }

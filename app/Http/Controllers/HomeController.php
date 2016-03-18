@@ -79,4 +79,12 @@ class HomeController extends Controller
             'name' => $file_name
         ]);
     }
+
+    public function deleteFile(Request $req, $id = 0){
+        $file = File::findOrFail($id);
+        $this->authorize('delete-file', $file);
+        $file->remove();
+        $file->delete();
+        return 'Xóa thành công';
+    }
 }
