@@ -87,4 +87,22 @@ class HomeController extends Controller
         $file->delete();
         return 'Xóa thành công';
     }
+
+    /**
+     * Return list of  files download links as text format
+     * @param  Request $req [description]
+     * @param  [type]  $id  [description]
+     * @return [type]       [description]
+     */
+    public function getListFile(Request $req, $id){
+        $links = [];
+        $files = Task::findOrFail($id)->files;
+        foreach ($files as $file){
+            if ($file->url()) $links[] = $file->url();
+        }
+        return response(implode('\n', $links))->withHeaders([
+            'Content-type' => 'text/plain',
+            'Content-disposition' => 'attachment; filename=epudrive_' . $id .'.txt' 
+        ]);
+    }
 }

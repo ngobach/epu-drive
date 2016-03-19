@@ -29,5 +29,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Task');
     }
 
+    public function getProfileUrlAttribute(){
+        return action('UserController@getDetail', ['id'=>$this->id]);
+    }
     
 }

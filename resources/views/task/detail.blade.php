@@ -37,7 +37,7 @@
 					<div class="list-group-item clearfix" id="file-{{$file->id}}">
 						<div class="pull-left" style="">
 							<p><strong>{{basename($file->file_path)}}</strong></p>
-							<small class="text-muted">Tải lên bởi <b>{{$file->user->name}}</b>, {{$file->created_at}}</small>
+							<small class="text-muted">Tải lên bởi <a href="{!!$file->user->profileUrl!!}"><b>{{$file->user->name}}</b></a>, {{$file->created_at}}</small>
 						</div>
 						<div class="pull-right">
 							<div class="btn-group">
@@ -49,6 +49,9 @@
 						</div>
 					</div>
 					@endforeach
+				</div>
+				<div class="panel-footer text-right">
+					<a href="{!!action('HomeController@getListFile', ['id'=>$task->id])!!}" class="btn btn-sm btn-primary">Lấy danh sách</a>
 				</div>
 			</div>
 			@endif

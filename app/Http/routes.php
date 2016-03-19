@@ -26,6 +26,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('detail/{id}','HomeController@showDetail');
 	Route::post('detail/{id}','HomeController@postFile');
 	Route::get('file/{id}','HomeController@getFile');
+	Route::get('links/{id}','HomeController@getListFile');
 	Route::delete('file/{id?}','HomeController@deleteFile');
 
 	// Test page
