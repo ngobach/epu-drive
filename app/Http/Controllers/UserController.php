@@ -68,4 +68,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('auth.detail', ['user'=>$user]);
     }
+
+    public function getIndex(Request $req) {
+        $users = User::all();
+        return view('auth.list', ['users' => $users]);
+    }
 }

@@ -25,7 +25,13 @@
 							@if ($user->admin)
 							<p class="text-danger">Quản trị viên</p>
 							@endif
+							@if ($user->teacher)
+							<p class="text-warning">Giảng viên</p>
+							@endif
 							<p>Tham gia từ: {{$user->created_at->format('d/m/Y')}}</p>
+							@if (auth()->user()->admin || auth()->user()->id == $user->id)
+							<a href="{!!action('UserController@getEdit', ['id'=>$user->id])!!}" class="btn btn-block btn-lg btn-primary">Chỉnh sửa</a>
+							@endif
 						</div>
 					</div>
 				</div>

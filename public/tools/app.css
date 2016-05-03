@@ -62,3 +62,7 @@ li:hover .user-icon {
 .item.expired {
   background: #EEE;
 }
+
+.table-centered td, .table-centered th {
+  text-align: center !important;
+}

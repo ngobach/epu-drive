@@ -53,15 +53,16 @@
                         </ul>
                     </li>
                     @endif
-                    <li><a href="{{ url('/home') }}">Bảng tin</a></li>
-                    <li><a href="{{ url('/gioi-thieu') }}">Giới thiệu</a></li>
+                    <li><a href="{!! url('/home') !!}">Bảng tin</a></li>
+                    <li><a href="{!! action('UserController@getIndex') !!}">Thành viên</a></li>
+                    <li><a href="{!! url('/gioi-thieu') !!}">Giới thiệu</a></li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Đăng nhập</a></li>
-                    <li><a href="{{ url('/register') }}">Đăng ký</a></li>
+                    <li><a href="{!! url('/login') !!}">Đăng nhập</a></li>
+                    <li><a href="{!! url('/register') !!}">Đăng ký</a></li>
                     @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -69,10 +70,10 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ action('UserController@getDetail', ['id'=> auth()->user()->id]) }}"><i class="fa fa-btn fa-user"></i>Thông tin tài khoản</a></li>
-                            <li><a href="{{ action('UserController@getEdit') }}"><i class="fa fa-btn fa-edit"></i>Cập nhật hồ sơ</a></li>
+                            <li><a href="{!! action('UserController@getDetail', ['id'=> auth()->user()->id]) !!}"><i class="fa fa-btn fa-user"></i>Thông tin tài khoản</a></li>
+                            <li><a href="{!! action('UserController@getEdit') !!}"><i class="fa fa-btn fa-edit"></i>Cập nhật hồ sơ</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Đăng xuất</a></li>
+                            <li><a href="{!! url('/logout') !!}"><i class="fa fa-btn fa-sign-out"></i>Đăng xuất</a></li>
                         </ul>
                     </li>
                     @endif

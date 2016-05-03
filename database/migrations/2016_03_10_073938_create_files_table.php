@@ -17,6 +17,8 @@ class CreateFilesTable extends Migration
             $table->integer('user_id');
             $table->integer('task_id');
             $table->text('file_path');
+            $table->float('mark')->nullable();
+            $table->integer('given_by')->nullable();
             $table->timestamps();
         });
     }

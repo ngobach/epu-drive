@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{!!action('HomeController@showDetail', ['id'=>$task->id])!!}"><strong>{{str_limit($task->title,180)}}</strong></a>
+                                <a href="{!!action('HomeController@showDetail', ['id'=>$task->id])!!}"><strong style="font-size: 16pt">{{str_limit($task->title,180)}}</strong></a>
                             </div>
                         </div>
                     </div>

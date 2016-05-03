@@ -21,7 +21,7 @@
 					</div>
 					@endif
 					<div class="pull-right">
-						Đăng bởi <strong data-toggle="tooltip" title="{{$task->user->email}}">{{$task->user->name}}</strong>, {{$task->created_at->diffForHumans()}}
+						Đăng bởi <a href="{!!action('UserController@getDetail', ['id'=>$task->user->id])!!}"><strong data-toggle="tooltip" title="{{$task->user->email}}">{{$task->user->name}}</strong></a>, {{$task->created_at->diffForHumans()}}
 					</div>
 				</div>
 			</div>
@@ -33,22 +33,7 @@
 					<h3 class="panel-title">Các bài nộp</h3>
 				</div>
 				<div class="list-group">
-					@foreach ($files as $file)
-					<div class="list-group-item clearfix" id="file-{{$file->id}}">
-						<div class="pull-left" style="">
-							<p><strong>{{basename($file->file_path)}}</strong></p>
-							<small class="text-muted">Tải lên bởi <a href="{!!$file->user->profileUrl!!}"><b>{{$file->user->name}}</b></a>, {{$file->created_at}}</small>
-						</div>
-						<div class="pull-right">
-							<div class="btn-group">
-							<a href="{!!action('HomeController@getFile', ['id' => $file->id ])!!}" class="btn btn-success">Tải xuống</a>
-							@if (Gate::check('delete-file', $file))
-							<a href="javascript:void(0)" class="btn btn-danger" onclick="deleteFile({{$file->id}})">Xoá</a>
-							@endif
-							</div>
-						</div>
-					</div>
-					@endforeach
+					@each('task.file', $files, 'file')
 				</div>
 				<div class="panel-footer text-right">
 					<a href="{!!action('HomeController@getListFile', ['id'=>$task->id])!!}" class="btn btn-sm btn-primary">Lấy danh sách</a>
