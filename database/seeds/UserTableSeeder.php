@@ -32,5 +32,8 @@ class UserTableSeeder extends Seeder
         $user->password = bcrypt('123456');
         $user->actived = true;
         $user->save();
+
+        // Dummy accounts
+        factory(User::class, 27)->create();
     }
 }

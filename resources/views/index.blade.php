@@ -20,7 +20,6 @@
 	</div>
 	<div id="middle">
 		<p>Website nộp và quản lý bài tập trực tuyến dùng cho sinh viên <span>đại học Điện Lực</span>.</p>
-		<p><b>Tài khoản: svd8cnpm@gmail.com</b> - <b>Mật khẩu: cnttepu</b></p>
 		@if (auth()->guest())
 		<div class="cta">
 			<a href="{{ url('/login') }}" class="btn btn-success">Đăng nhập</a>
@@ -28,7 +27,8 @@
 		</div>
 		@else
 		<div class="cta">
-			<a href="{{ url('/home') }}" class="btn btn-success">Tiếp tục</a>
+			<a href="{{ url('/home') }}" class="btn btn-success">Tiếp tục với &quot;{{auth()->user()->name}}&quot;</a>
+			<a href="{{ url('/logout') }}" class="btn btn-danger">Đăng xuất</a>
 		</div>
 		@endif
 	</div>

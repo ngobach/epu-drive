@@ -12,11 +12,6 @@ class TaskTableSeeder extends Seeder
      */
     public function run()
     {
-        Task::create([
-        	'user_id' => 1,
-        	'title' => 'Phần mềm nguồn mở',
-        	'description' => 'Báo cáo phầm mềm nguồn mở',
-        	'end_at' => '2016-06-01'
-    	]);
+        factory(Task::class, 10)->create();
     }
 }
