@@ -35,6 +35,6 @@ $factory->define(App\Task::class, function (Faker\Generator $faker) {
 $factory->define(App\File::class, function (Faker\Generator $faker) {
 	return [
     	'user_id' => 3,
-    	'file_path' => implode($faker->words(3),'_') . '.zip'
+    	'file_path' => $faker->md5 . '/' . implode($faker->words(3),'_') . '.zip'
 	];
 });
