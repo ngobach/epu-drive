@@ -2,7 +2,7 @@
 @section('title', 'Danh sách thành viên')
 @section('content')
 	<div class="container">
-		<h3>Danh sách thành viên</h3>
+		<h2>Danh sách thành viên</h2>
 		<table class="table table-hover table-bordered table-centered">
 			<thead>
 				<tr>

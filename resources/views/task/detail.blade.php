@@ -6,10 +6,8 @@
 	@include('common.status')
 	<div class="row">
 		<div class="col-sm-9">
+		<h2>{{$task->title}}</h2>
 			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{$task->title}}</h3>
-				</div>
 				<div class="panel-body">
 					{!!$task->description!!}
 				</div>
@@ -30,7 +28,7 @@
 			@if (count($files) > 0)
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h3 class="panel-title">Các bài nộp</h3>
+					<h3 class="panel-title"><i class="glyphicon glyphicon-tasks"></i> Các bài đã nộp</h3>
 				</div>
 				<div class="list-group">
 					@each('task.file', $files, 'file')
@@ -42,36 +40,41 @@
 			@endif
 		</div>
 		<div class="col-sm-3">
-			@if ($task->expired())
-			<div class="alert alert-warning">
-				<strong>Cảnh báo</strong>
-				<p>Thời hạn nộp bài đã hết !</p>
-			</div>
-			@else
-			@can('upload', $task)
-			<!-- File submission -->
-			@include('common.error')
-			<form action="{!! action('HomeController@postFile', ['id'=>$task->id]) !!}" method="post" enctype="multipart/form-data">
-				{!! csrf_field() !!}
-				<div class="input-group" style="margin-bottom: 10px">
-					<input type="file" name="file" class="form-control">
-  					<span class="input-group-btn">
-  						<button type="submit" class="btn btn-primary">Nộp file</button>
-  					</span>
-				</div>	
-			</form>
-			@else
-			<div class="alert alert-warning">
-				Bạn đã nộp bài!
-			</div>
-			@endcan
+			<h2>Nộp bài</h2>
+			<div class="well well-sm"> 
+				@if ($task->expired())
+				<div class="alert alert-warning">
+					<strong>Cảnh báo</strong>
+					<p>Thời hạn nộp bài đã hết !</p>
+				</div>
+				@else
+				@can('upload', $task)
+				<!-- File submission -->
+				@include('common.error')
+				<p><b>Chọn file bài làm của bạn tại đây</b></p>
+				<p><b>Chú ý:</b><br>Nén các tệp tin bằng định dạng <code>.zip</code> trước khi upload.</p>
+				<form action="{!! action('HomeController@postFile', ['id'=>$task->id]) !!}" method="post" enctype="multipart/form-data">
+					{!! csrf_field() !!}
+					<div class="input-group" style="margin-bottom: 10px">
+						<input type="file" name="file" class="form-control">
+	  					<span class="input-group-btn">
+	  						<button type="submit" class="btn btn-primary">Nộp file</button>
+	  					</span>
+					</div>	
+				</form>
+				@else
+				<div class="alert alert-warning">
+					Bạn đã nộp bài!
+				</div>
+				@endcan
 
-			<div class="alert alert-info">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				Thời hạn nộp bài sẽ kết thúc sau
-				<strong>{{$task->end_at->diffForHumans()}}</strong>
+				<div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					Thời hạn nộp bài sẽ kết thúc sau
+					<strong>{{$task->end_at->diffForHumans()}}</strong>
+				</div>
+				@endif
 			</div>
-			@endif
 		</div>
 	</div>
 </div>

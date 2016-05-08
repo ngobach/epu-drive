@@ -157,8 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-        'Creativeorange\Gravatar\GravatarServiceProvider'
-
+        Creativeorange\Gravatar\GravatarServiceProvider::class
     ],
 
     /*
@@ -205,7 +204,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
+        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
     ],
 
 ];

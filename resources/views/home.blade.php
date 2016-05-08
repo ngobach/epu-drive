@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container">
+    <h2>Bảng tin</h2>
+    <p>Các bài đăng bởi quản trị viên. Các thành viên chú ý nộp bài trước khi thời hạn kết thúc</p>
     <div class="row">
         <div class="col-md-9">
             <div class="panel panel-primary">
-                <div class="panel-heading"><i class="glyphicon glyphicon-home"></i> &nbsp; Bảng tin</div>
                 @forelse ($tasks as $task)
                 <div class="panel-body item {{ $task->expired()?'expired':''}}">
                     <div class="clearfix">

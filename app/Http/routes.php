@@ -31,6 +31,6 @@ Route::group(['middleware' => 'web'], function () {
 	Route::delete('file/{id?}','HomeController@deleteFile');
 	// Trang chủ
 	Route::get('/', function () {
-	    return view('index');
+	    return redirect('gioi-thieu');
 	});
 });

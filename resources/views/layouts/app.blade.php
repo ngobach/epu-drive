@@ -33,8 +33,9 @@
                 <span class="icon-bar"></span>
                 </button>
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    EPU Drive
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    <img src="{!!asset('images/file.png')!!}" alt="logo">
+                    <strong style="color: #FF6B6B">EPU</strong><sub style="color: #556270">DRIVE</sub>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -85,8 +86,8 @@
     @yield('content')
     <footer class="footer">
         <div class="container">
-            <p class="text-muted pull-right">Sinh viên: Ngô Xuân Bách - Trần Anh Đức</p>
-            <p class="text-muted">&copy; 2016 Đại Học Điện Lực Hà Nội</p>
+            <p class="pull-right">Sinh viên: Ngô Xuân Bách - Trần Anh Đức</p>
+            <p>&copy; 2016 Đại Học Điện Lực Hà Nội</p>
         </div>
     </footer>
     <!-- JavaScripts -->
