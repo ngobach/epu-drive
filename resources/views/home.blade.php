@@ -34,28 +34,44 @@
 
 
         <div class="col-md-3">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-stats"></i> Thống kê</h3>
+            <div class="boxxy red">
+                <div class="boxxy-content">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span>{{ $stat['total_user'] }}</span>
                 </div>
-                <table class="table table-bordered">
-                    <tr>
-                        <th style="width: 70">Số thành viên</th>
-                        <td class="text-center">{{ $stat['total_user'] }}</td>
-                    </tr>
-                    <tr>
-                        <th style="width: 70">Thành viên chưa kích hoạt</th>
-                        <td class="text-center">{{ $stat['unactivated_user'] }}</td>
-                    </tr>
-                    <tr>
-                        <th style="width: 70">Số chủ đề</th>
-                        <td class="text-center">{{ $stat['total_task'] }}</td>
-                    </tr>
-                    <tr>
-                        <th style="width: 70">Số tệp tin</th>
-                        <td class="text-center">{{ $stat['total_file'] }}</td>
-                    </tr>
-                </table>
+                <div class="boxxy-foot">
+                    Số thành viên
+                </div>
+            </div>
+
+            <div class="boxxy blue">
+                <div class="boxxy-content">
+                    <i class="glyphicon glyphicon-time"></i>
+                    <span>{{ $stat['unactivated_user'] }}</span>
+                </div>
+                <div class="boxxy-foot">
+                    Thành viên chờ kích hoạt
+                </div>
+            </div>
+
+            <div class="boxxy orange">
+                <div class="boxxy-content">
+                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                    <span>{{ $stat['total_task'] }}</span>
+                </div>
+                <div class="boxxy-foot">
+                    Số chủ đề
+                </div>
+            </div>
+
+            <div class="boxxy grey">
+                <div class="boxxy-content">
+                    <i class="glyphicon glyphicon-folder-open"></i>
+                    <span>{{ $stat['total_file'] }}</span>
+                </div>
+                <div class="boxxy-foot">
+                    Số tệp tin
+                </div>
             </div>
         </div>
     </div>

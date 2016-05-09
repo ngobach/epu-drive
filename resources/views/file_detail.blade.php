@@ -12,7 +12,7 @@
 					<div class="text-center">
 						<h3>{{$name}}</h3>
 						@if (!is_null($file->mark))
-						<h2 style="font-size: 40pt">{{$file->mark}}</h2>
+						<h2 style="font-size: 40pt">{{number_format($file->mark,1)}}</h2>
 						<a href="{!!action('UserController@getDetail', ['id'=>$file->teacher->id])!!}"><span class="label label-success">{{$file->teacher->name}}</span></a>
 						@endif
 					</div>
