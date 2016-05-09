@@ -33,4 +33,10 @@ class User extends Authenticatable
         return action('UserController@getDetail', ['id'=>$this->id]);
     }
     
+    /**
+     * SCOPES
+     */
+    public function scopeStudent($query) {
+        return $query->where('teacher', false)->where('admin', false)->where('actived', true);
+    }
 }

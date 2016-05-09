@@ -14,6 +14,9 @@ class File extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function teacher() {
+        return $this->belongsTo('App\User', 'given_by');
+    }
     public function task(){
         return $this->belongsTo('App\Task');
     }
@@ -22,7 +25,7 @@ class File extends Model
     /**
      * Get URL to file or null if file was deleted
      * 
-     * @return boolean|string URL to file or null if file was deled
+     * @return boolean|string URL to file or null if file was deleled
      */
     public function url(){
         $realPath = public_path($this->file_path);

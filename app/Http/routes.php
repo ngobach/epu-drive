@@ -27,8 +27,12 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('detail/{id}','HomeController@showDetail');
 	Route::post('detail/{id}','HomeController@postFile');
 	Route::get('file/{id}','HomeController@getFile');
-	Route::get('links/{id}','HomeController@getListFile');
+	Route::post('file/{id}','HomeController@postFileMark');
+	Route::get('export/{id}/links','HomeController@getListFile');
+	Route::get('export/{id}/xls','HomeController@exportExcel');
+	Route::get('detail/{id}/missing','HomeController@missing');
 	Route::delete('file/{id?}','HomeController@deleteFile');
+
 	// Trang chủ
 	Route::get('/', function () {
 	    return redirect('gioi-thieu');

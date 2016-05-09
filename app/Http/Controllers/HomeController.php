@@ -6,7 +6,9 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Task;
 use App\File;
+use App\User;
 use File as FS;
+use Excel;
 
 class HomeController extends Controller
 {
@@ -68,6 +70,26 @@ class HomeController extends Controller
     }
 
     /**
+     * Submit file  mark by teacher
+     * @param  Request $req [description]
+     * @param  [type]  $id  [description]
+     * @return [type]       [description]
+     */
+    public function postFileMark(Request $req, $id) {
+        if (!$req->user()->teacher)
+            abort(403);
+        $this->validate($req, [
+            'mark' => 'required|numeric|min:0|max:10'
+        ]);
+
+        $file = File::findOrFail($id);
+        $file->mark = $req->mark;
+        $file->given_by = $req->user()->id;
+        $file->save();
+        return back()->with('status', 'Điểm bài làm cập nhật thành công');
+    }
+
+    /**
      * Return file detail view
      * @return Response
      */
@@ -102,7 +124,76 @@ class HomeController extends Controller
         }
         return response(implode('\n', $links))->withHeaders([
             'Content-type' => 'text/plain',
-            'Content-disposition' => 'attachment; filename=epudrive_' . $id .'.txt' 
+            // 'Content-disposition' => 'attachment; filename=epudrive_' . $id .'.txt' 
         ]);
+    }
+
+    /**
+     * Export task into excel format with marks
+     * @param  Request $req HTTPRequest
+     * @param  int  $id  File ID
+     * @return Response
+     */
+    public function exportExcel(Request $req, $id) {
+        $task = Task::findOrFail($id);
+        $files = $task->files()->with('user')->get();
+        $rows = $files->map(function ($file) {
+            return [$file->user->name, $file->user->email, basename($file->file_path), $file->mark];
+        })->toArray();
+        Excel::create(str_slug($task->title), function ($excel) use ($task, $rows)
+        {
+            $excel->setTitle('Danh sách nộp bài môn "' . $task->title . '"')
+                ->setKeywords('epu drive')
+                ->setCreator('EPU Drive')
+                ->setCompany('Đại Học Điện Lực');
+            $excel->sheet('Sheet', function($sheet) use ($rows) {
+                $sheet->row(1, ['Họ tên', 'Email', 'Bài nộp', 'Điểm']);
+                $sheet->row(1, function($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->rows($rows);
+                $sheet->setWidth([
+                    'A' => 25,
+                    'B' => 30,
+                    'C' => 40,
+                    'D' => 20,
+                ]);
+                $sheet->setBorder('A1:D'.(count($rows)+1), 'thin');
+            });
+        })->download('xlsx');
+    }
+
+    /**
+     * List student havent submit file to a task
+     * @param  Request $req
+     * @param   $id  
+     * @return Response
+     */
+    public function missing(Request $req, $id) {
+        $task = Task::findOrFail($id);
+        $missing = $task->missing();
+        Excel::create("thieu-bai", function ($excel) use ($missing)
+        {
+            $excel->setTitle('Danh sách chưa nộp bài')
+                ->setKeywords('epu drive')
+                ->setCreator('EPU Drive')
+                ->setCompany('Đại Học Điện Lực');
+            $excel->sheet('Sheet', function($sheet) use ($missing) {
+                $sheet->row(1, ['Họ tên', 'Email']);
+                $sheet->row(1, function($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->rows($missing->map(function($user){
+                    return [$user->name, $user->email];
+                })->toArray());
+                $sheet->setWidth([
+                    'A' => 25,
+                    'B' => 30,
+                    'C' => 40,
+                    'D' => 20,
+                ]);
+                $sheet->setBorder('A1:B'.(count($missing)+1), 'thin');
+            });
+        })->download('xlsx');
     }
 }

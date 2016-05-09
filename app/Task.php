@@ -40,4 +40,8 @@ class Task extends Model
     public function canSubmit(User $user){
         return $this->files()->where('user_id', $user->id)->count() == 0;
     }
+
+    public function missing() {
+        return User::student()->whereNotIn('id',$this->files->pluck('user_id')->toArray())->get();
+    }
 }

@@ -33,12 +33,10 @@
 				<div class="list-group">
 					@each('task.file', $files, 'file')
 				</div>
-				<div class="panel-footer text-right">
-					<a href="{!!action('HomeController@getListFile', ['id'=>$task->id])!!}" class="btn btn-sm btn-primary">Lấy danh sách</a>
-				</div>
 			</div>
 			@endif
 		</div>
+
 		<div class="col-sm-3">
 			<h2>Nộp bài</h2>
 			<div class="well well-sm"> 
@@ -74,6 +72,13 @@
 					<strong>{{$task->end_at->diffForHumans()}}</strong>
 				</div>
 				@endif
+			</div>
+
+			<h2>Chức năng</h2>
+			<div class="list-group">
+				<a class="list-group-item" href="{!!action('HomeController@getListFile', ['id'=>$task->id])!!}"><i class="glyphicon glyphicon-download"></i> Danh sách tệp tin (IDM)</a>
+				<a class="list-group-item" href="{!!action('HomeController@exportExcel', ['id'=>$task->id])!!}"><i class="glyphicon glyphicon-export"></i> Xuất ra Excel</a>
+				<a class="list-group-item" href="{!!action('HomeController@missing', ['id'=>$task->id])!!}"><i class="glyphicon glyphicon-remove-circle"></i> Danh sách chưa nộp bài <span class="badge">{{$task->missing()->count()}}</span></a>
 			</div>
 		</div>
 	</div>

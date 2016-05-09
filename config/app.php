@@ -157,7 +157,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-        Creativeorange\Gravatar\GravatarServiceProvider::class
+        Creativeorange\Gravatar\GravatarServiceProvider::class,
+        'Maatwebsite\Excel\ExcelServiceProvider',
     ],
 
     /*
@@ -205,6 +206,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
     ],
 
 ];
