@@ -12,7 +12,7 @@
     
     <!-- Styles -->
     <link href="https://bootswatch.com/lumen/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ url('/tools/app.css') }}" rel="stylesheet">
+    <link href="/tools/app.css" rel="stylesheet">
 
     <style>
         .fa-btn {

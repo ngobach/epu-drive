@@ -10,10 +10,11 @@
 | database. Just tell the factory how a default model should look.
 |
 */
+$faker = Faker\Factory::create('vi_VN');
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\User::class, function () use ($faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->firstName() . ' ' . $faker->lastName(),
         'email' => $faker->safeEmail,
         'actived' => true,
         'admin' => false,
