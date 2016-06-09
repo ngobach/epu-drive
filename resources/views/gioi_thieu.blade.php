@@ -11,56 +11,58 @@
 	<div style="height: 20px">&nbsp;</div>
 	<div class="row">
 		<div class="col-sm-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading text-center">
-					<span class="rounded red"><i class="glyphicon glyphicon-thumbs-up" style="font-size: 48pt"></i></span>
+			<div class="">
+				<div class="panel-heading text-center anhpanel">
+					<span class="">
+						<img src="/images/webicon.png" alt="" width="80px"/>
+						</br>
+						<div style="margin-top:5px;font-size: 25px">
+							<strong style="color: #FF6B6B">EPU</strong>
+							<sub style="color: #556270">DRIVE</sub>
+						</div>
+					</span>
 				</div>
 				<div class="panel-body">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					EPU Drive là website nộp và quản lý tài liệu. Trang web tạo ra với mục đích giúp giảng viên dễ dàng quản lý
+					được việc nộp bài của sinh viên trong quá trình học tập, đảm bảo thông tin của giảng viên đến với sinh viên một cách nhanh chóng chính xác. Hạn chế 
+					những khuyết điểm của việc thu bài truyền thống. Ngoài ra, trang web còn là nơi lưu trữ, chia sẻ dữ liệu giữa sinh viên
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading text-center">
-					<span class="rounded red"><i class="glyphicon glyphicon-thumbs-up" style="font-size: 48pt"></i></span>
+			<div class="">
+				<div class="panel-heading text-center anhpanel">
+					<span class=""><!--<i class="glyphicon glyphicon-thumbs-up" style="font-size: 48pt"></i>-->
+						<img src="/images/laravel-logo2.png" alt="" />
+					</span>
 				</div>
 				<div class="panel-body">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				Laravel là 1 open source, là một framework dùng để xây dựng web application, được thiết kế dựa trên mô hình MVC (Model, Controller, View), toàn bộ source code được đặt trên github. Theo kết qủa khảo sát của các Developer vào tháng 12 năm 2013, thì Laravel Framework đứng top 1 một trong những framework phổ biến nhất, tiếp sau là Phalcon, Symfony2, CodeIgniter và các framework khác. Tháng 8 năm 2014, Laravel Framework được xem như là một dự án PHP phổ biến nhất trên Github. Xem thêm <a href="https://laravel.com/">tại đây</a>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading text-center">
-					<span class="rounded red"><i class="glyphicon glyphicon-thumbs-up" style="font-size: 48pt"></i></span>
+			<div class="">
+				<div class="panel-heading text-center anhpanel">
+					<span class="rounded red">
+						<img src="/images/code.png" alt="" width="80px"/>
+						</br>
+						<strong style="color: #FF6B6B; margin-top:5px;display: block;font-size:22px">
+							MÃ NGUỒN MỞ
+						</strong>
+					</span>
 				</div>
 				<div class="panel-body">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Phần mềm nguồn mở (PMNM) là những phần mềm được cung cấp dưới cả dạng mã và nguồn, không chỉ là miễn phí về giá mua mà chủ yếu là miễn phí về bản quyền: người dùng có quyền sửa đổi, cải tiến, phát triển, nâng cấp theo một số nguyên tắc chung qui định trong giấy phép PMNM mà không cần xin phép ai, điều mà họ không được phép làm đối với các phần mềm nguồn đóng.
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="panel">
+	<div class="" style="margin-top:100px;margin-bottom:100px">
 		<div class="panel-body" style="padding: 0px">
 			<div class="contact-form">
-				<div class="map">
+				<div class="map pull-right">
 				<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://my.ctrlq.org/maps/#roadmap|15|21.04718640990959|105.78551829391792" style="margin-bottom: -10px"></iframe>
 				</div>
 				<div class="form">
