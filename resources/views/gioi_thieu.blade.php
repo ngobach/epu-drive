@@ -45,7 +45,7 @@
 			<div class="">
 				<div class="panel-heading text-center anhpanel">
 					<span class="rounded red">
-						<img src="/images/code.png" alt="" width="80px"/>
+						<img src="/images/Code.png" alt="" width="80px"/>
 						</br>
 						<strong style="color: #FF6B6B; margin-top:5px;display: block;font-size:22px">
 							MÃ NGUỒN MỞ
