@@ -86,8 +86,8 @@
     @yield('content')
     <footer class="footer">
         <div class="container">
-            <p class="pull-right">Sinh viên: Ngô Xuân Bách - Trần Anh Đức</p>
-            <p>&copy; 2016 Đại Học Điện Lực Hà Nội</p>
+            <p class="pull-right">Sinh viên: Ngô Xuân Bách - Đinh Viết Nam</p>
+            <p>&copy; {{date("Y")}} Đại Học Điện Lực Hà Nội</p>
         </div>
     </footer>
     <!-- JavaScripts -->

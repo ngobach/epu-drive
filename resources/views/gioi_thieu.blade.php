@@ -5,7 +5,7 @@
 	<div class="text-center">
 		<h2><strong style="color: #FF6B6B">EPU</strong><sub style="color: #556270">DRIVE</sub> là website nộp và quản lý tài liệu.</h2>
 		<p>
-			<big>Website được xây dựng bởi <strong>Ngô Xuân Bách</strong> &amp; <strong>Trần Anh Đức</strong> trên nền mã nguồn <a href="http://laravel.com/" target="_blank">Laravel 5</a>.</big>
+			<big>Website được xây dựng bởi <strong>Ngô Xuân Bách</strong> &amp; <strong>Đinh Viết Nam</strong> trên nền mã nguồn <a href="http://laravel.com/" target="_blank">Laravel 5</a>.</big>
 		</p>
 	</div>
 	<div style="height: 20px">&nbsp;</div>
