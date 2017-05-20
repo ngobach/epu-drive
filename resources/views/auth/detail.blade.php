@@ -29,9 +29,12 @@
 							<p class="text-warning">Giảng viên</p>
 							@endif
 							<p>Tham gia từ: {{$user->created_at->format('d/m/Y')}}</p>
-							@if (auth()->user()->admin || auth()->user()->id == $user->id)
-							<a href="{!!action('UserController@getEdit', ['id'=>$user->id])!!}" class="btn btn-block btn-lg btn-primary">Chỉnh sửa</a>
-							@endif
+							<div class="text-center">
+								@if (auth()->user()->admin || auth()->user()->id == $user->id)
+								<a href="{!!action('UserController@getEdit', ['id'=>$user->id])!!}" class="btn btn-primary">Chỉnh sửa</a>
+								<a href="{!!action('UserController@getPermission', ['id'=>$user->id])!!}" class="btn btn-info">Phân quyền</a>
+								@endif
+							</div>
 						</div>
 					</div>
 				</div>

@@ -74,13 +74,13 @@ class UserController extends Controller
     }
 
     public function getPermission(Request $req, $id) {
-        return view('auth.permission');
+        return view('auth.permission', ['user' => User::findOrFail($id)]);
     }
     
     public function postPermission(Request $req, $id) {
         $user = User::findOrFail($id);
-        $user->admin = $req->admin;
-        $user->teacher = $req->teacher;
+        $user->admin = $req->type == 'admin';
+        $user->teacher = $req->type == 'teacher';
         $user->save();
         return redirect()->action('UserController@getDetail', ['id' => $id]);
     }
