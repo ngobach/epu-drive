@@ -13,9 +13,8 @@ class UserController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth:true');
-		$this->middleware('admin', ['only' => ['getActivation','postActivation']]);
+		$this->middleware('admin', ['only' => ['getActivation','postActivation', 'getPermission', 'postPermission']]);
 	}
-
 
     function getEdit(Request $req,$id = false){
         if (!$id)
@@ -72,5 +71,17 @@ class UserController extends Controller
     public function getIndex(Request $req) {
         $users = User::all();
         return view('auth.list', ['users' => $users]);
+    }
+
+    public function getPermission(Request $req, $id) {
+        return view('auth.permission');
+    }
+    
+    public function postPermission(Request $req, $id) {
+        $user = User::findOrFail($id);
+        $user->admin = $req->admin;
+        $user->teacher = $req->teacher;
+        $user->save();
+        return redirect()->action('UserController@getDetail', ['id' => $id]);
     }
 }
